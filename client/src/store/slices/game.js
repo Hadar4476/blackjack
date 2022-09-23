@@ -47,7 +47,7 @@ const resetAces = (state, action) => {
 
     return {
       ...c,
-      value: isAce ? 1 : 0,
+      value: isAce ? 1 : c.value,
     };
   });
 };
