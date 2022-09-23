@@ -22,7 +22,6 @@ const Player = (props) => {
       const containAces = cards.some((c) => c.name.includes("ace"));
 
       if (containAces) {
-        console.log("Reached");
         dispatch(globalActions.game.resetAces("player"));
       }
     }
