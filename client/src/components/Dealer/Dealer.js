@@ -33,7 +33,9 @@ const Dealer = (props) => {
 
   useEffect(() => {
     if (dealerScore > 21) {
-      const containAces = cards.some((c) => c.name.includes("ace"));
+      const containAces = cards.some(
+        (c) => c.name.includes("ace") && c.value === 11
+      );
 
       if (containAces) {
         dispatch(globalActions.game.resetAces("dealer"));

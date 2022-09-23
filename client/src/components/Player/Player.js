@@ -19,7 +19,9 @@ const Player = (props) => {
     const playerScore = cards.reduce((acc, i) => acc + i.value, 0);
 
     if (playerScore > 21) {
-      const containAces = cards.some((c) => c.name.includes("ace"));
+      const containAces = cards.some(
+        (c) => c.name.includes("ace") && c.value === 11
+      );
 
       if (containAces) {
         dispatch(globalActions.game.resetAces("player"));
