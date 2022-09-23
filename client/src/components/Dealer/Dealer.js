@@ -14,10 +14,7 @@ const Dealer = (props) => {
 
   const dispatch = useDispatch();
 
-  const dealerScore = useMemo(
-    () => cards.reduce((acc, i) => acc + i.value, 0),
-    [cards]
-  );
+  const dealerScore = cards.reduce((acc, i) => acc + i.value, 0);
 
   // check if player decided to stay, dealer starts playing if so
   useEffect(() => {
@@ -33,6 +30,16 @@ const Dealer = (props) => {
       }
     }
   }, [shouldPlayerStay, dealerScore, cards, deck, emitAddNewCard, dispatch]);
+
+  useEffect(() => {
+    if (dealerScore > 21) {
+      const containAces = cards.some((c) => c.name.includes("ace"));
+
+      if (containAces) {
+        dispatch(globalActions.game.resetAces("dealer"));
+      }
+    }
+  }, [cards, dealerScore, dispatch]);
 
   // render cards images
   const cardElements = cards.map((c) => (

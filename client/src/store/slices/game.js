@@ -39,6 +39,19 @@ const drawCard = (state, action) => {
   state[participant].cards.push(newCard);
 };
 
+const resetAces = (state, action) => {
+  const participant = action.payload;
+
+  state[participant].cards = state[participant].cards.map((c) => {
+    const isAce = c.name.includes("ace");
+
+    return {
+      ...c,
+      value: isAce ? 1 : 0,
+    };
+  });
+};
+
 // create a slice to be exported for the deck
 const gameSlice = createSlice({
   name: "game",
@@ -48,6 +61,7 @@ const gameSlice = createSlice({
     finishGame,
     finishPlayerTurn,
     drawCard,
+    resetAces,
     restartGame: () => initialState,
   },
 });

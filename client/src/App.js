@@ -36,17 +36,23 @@ const App = () => {
   // check if a winner should be declared based on a decision of the player to "stay"
   useEffect(() => {
     if (shouldAnnounceWinner) {
+      const blackjack = 21;
+
       if (
-        playerScore > 21 ||
-        dealerScore === 21 ||
+        playerScore > blackjack ||
+        dealerScore === blackjack ||
         dealerScore === playerScore ||
-        (dealerScore < 21 && dealerScore > playerScore)
+        (dealerScore < blackjack &&
+          playerScore < blackjack &&
+          dealerScore > playerScore)
       ) {
         dispatch(globalActions.game.finishGame("dealer"));
       } else if (
-        dealerScore > 21 ||
-        playerScore === 21 ||
-        (playerScore < 21 && playerScore > dealerScore)
+        dealerScore > blackjack ||
+        playerScore === blackjack ||
+        (playerScore < blackjack &&
+          dealerScore < blackjack &&
+          playerScore > dealerScore)
       ) {
         dispatch(globalActions.game.finishGame("player"));
       }
