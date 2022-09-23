@@ -1,0 +1,262 @@
+[
+  {
+    "id": "C2",
+    "name": "clubs_2",
+    "value": 2
+  },
+  {
+    "id": "C3",
+    "name": "clubs_3",
+    "value": 3
+  },
+  {
+    "id": "C4",
+    "name": "clubs_4",
+    "value": 4
+  },
+  {
+    "id": "C5",
+    "name": "clubs_5",
+    "value": 5
+  },
+  {
+    "id": "C6",
+    "name": "clubs_6",
+    "value": 6
+  },
+  {
+    "id": "C7",
+    "name": "clubs_7",
+    "value": 7
+  },
+  {
+    "id": "C8",
+    "name": "clubs_8",
+    "value": 8
+  },
+  {
+    "id": "C9",
+    "name": "clubs_9",
+    "value": 9
+  },
+  {
+    "id": "C10",
+    "name": "clubs_10",
+    "value": 10
+  },
+  {
+    "id": "CA",
+    "name": "clubs_ace",
+    "value": 11
+  },
+  {
+    "id": "CJ",
+    "name": "clubs_jack",
+    "value": 10
+  },
+  {
+    "id": "CK",
+    "name": "clubs_king",
+    "value": 10
+  },
+  {
+    "id": "CQ",
+    "name": "clubs_queen",
+    "value": 10
+  },
+  {
+    "id": "D2",
+    "name": "diamonds_2",
+    "value": 2
+  },
+  {
+    "id": "D3",
+    "name": "diamonds_3",
+    "value": 3
+  },
+  {
+    "id": "D4",
+    "name": "diamonds_4",
+    "value": 4
+  },
+  {
+    "id": "D5",
+    "name": "diamonds_5",
+    "value": 5
+  },
+  {
+    "id": "D6",
+    "name": "diamonds_6",
+    "value": 6
+  },
+  {
+    "id": "D7",
+    "name": "diamonds_7",
+    "value": 7
+  },
+  {
+    "id": "D8",
+    "name": "diamonds_8",
+    "value": 8
+  },
+  {
+    "id": "D9",
+    "name": "diamonds_9",
+    "value": 9
+  },
+  {
+    "id": "D10",
+    "name": "diamonds_10",
+    "value": 10
+  },
+  {
+    "id": "DA",
+    "name": "diamonds_ace",
+    "value": 11
+  },
+  {
+    "id": "DJ",
+    "name": "diamonds_jack",
+    "value": 10
+  },
+  {
+    "id": "DK",
+    "name": "diamonds_king",
+    "value": 10
+  },
+  {
+    "id": "DQ",
+    "name": "diamonds_queen",
+    "value": 10
+  },
+  {
+    "id": "H2",
+    "name": "hearts_2",
+    "value": 2
+  },
+  {
+    "id": "H3",
+    "name": "hearts_3",
+    "value": 3
+  },
+  {
+    "id": "H4",
+    "name": "hearts_4",
+    "value": 4
+  },
+  {
+    "id": "H5",
+    "name": "hearts_5",
+    "value": 5
+  },
+  {
+    "id": "H6",
+    "name": "hearts_6",
+    "value": 6
+  },
+  {
+    "id": "H7",
+    "name": "hearts_7",
+    "value": 7
+  },
+  {
+    "id": "H8",
+    "name": "hearts_8",
+    "value": 8
+  },
+  {
+    "id": "H9",
+    "name": "hearts_9",
+    "value": 9
+  },
+  {
+    "id": "H10",
+    "name": "hearts_10",
+    "value": 10
+  },
+  {
+    "id": "HA",
+    "name": "hearts_ace",
+    "value": 11
+  },
+  {
+    "id": "HJ",
+    "name": "hearts_jack",
+    "value": 10
+  },
+  {
+    "id": "HK",
+    "name": "hearts_king",
+    "value": 10
+  },
+  {
+    "id": "HQ",
+    "name": "hearts_queen",
+    "value": 10
+  },
+  {
+    "id": "S2",
+    "name": "spades_2",
+    "value": 2
+  },
+  {
+    "id": "S3",
+    "name": "spades_3",
+    "value": 3
+  },
+  {
+    "id": "S4",
+    "name": "spades_4",
+    "value": 4
+  },
+  {
+    "id": "S5",
+    "name": "spades_5",
+    "value": 5
+  },
+  {
+    "id": "S6",
+    "name": "spades_6",
+    "value": 6
+  },
+  {
+    "id": "S7",
+    "name": "spades_7",
+    "value": 7
+  },
+  {
+    "id": "S8",
+    "name": "spades_8",
+    "value": 8
+  },
+  {
+    "id": "S9",
+    "name": "spades_9",
+    "value": 9
+  },
+  {
+    "id": "S10",
+    "name": "spades_10",
+    "value": 10
+  },
+  {
+    "id": "SA",
+    "name": "spades_ace",
+    "value": 11
+  },
+  {
+    "id": "SJ",
+    "name": "spades_jack",
+    "value": 10
+  },
+  {
+    "id": "SK",
+    "name": "spades_king",
+    "value": 10
+  },
+  {
+    "id": "SQ",
+    "name": "spades_queen",
+    "value": 10
+  }
+]
