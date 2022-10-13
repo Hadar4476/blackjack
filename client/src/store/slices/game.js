@@ -36,33 +36,13 @@ const finishPlayerTurn = (state) => {
 // reducer for appending a card to a participant deck
 const drawCard = (state, action) => {
   const { newCard, participant } = action.payload;
-  state[participant].cards.push(newCard);
-};
 
-const resetAces = (state, action) => {
-  const participant = action.payload;
-
-  let resetCount = 0;
   const aces = state[participant].cards.filter((c) => c.name.includes("ace"));
+  if (aces.length > 1) {
+    newCard.value = 1;
+  }
 
-  state[participant].cards = state[participant].cards.map((c) => {
-    let value = c.value;
-
-    const isAce = c.name.includes("ace");
-    if (isAce) {
-      if (aces.length === 1) {
-        value = 1;
-      } else if (aces.length > 1) {
-        value = !resetCount ? c.value : 1;
-        resetCount++;
-      }
-    }
-
-    return {
-      ...c,
-      value,
-    };
-  });
+  state[participant].cards.push(newCard);
 };
 
 // create a slice to be exported for the deck
@@ -74,7 +54,6 @@ const gameSlice = createSlice({
     finishGame,
     finishPlayerTurn,
     drawCard,
-    resetAces,
     restartGame: () => initialState,
   },
 });

@@ -31,18 +31,6 @@ const Dealer = (props) => {
     }
   }, [shouldPlayerStay, dealerScore, cards, deck, emitAddNewCard, dispatch]);
 
-  useEffect(() => {
-    if (dealerScore > 21) {
-      const containAces = cards.some(
-        (c) => c.name.includes("ace") && c.value === 11
-      );
-
-      if (containAces) {
-        dispatch(globalActions.game.resetAces("dealer"));
-      }
-    }
-  }, [cards, dealerScore, dispatch]);
-
   // render cards images
   const cardElements = cards.map((c) => (
     <CardImage key={c.id} id={c.id} name={c.name} face={c.face} />

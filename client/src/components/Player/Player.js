@@ -15,20 +15,6 @@ const Player = (props) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const playerScore = cards.reduce((acc, i) => acc + i.value, 0);
-
-    if (playerScore > 21) {
-      const containAces = cards.some(
-        (c) => c.name.includes("ace") && c.value === 11
-      );
-
-      if (containAces) {
-        dispatch(globalActions.game.resetAces("player"));
-      }
-    }
-  }, [cards, dispatch]);
-
   // function for dispatching an action to indicate if the player decided to stay
   const onFinishPlayerTurn = () => {
     dispatch(globalActions.game.finishPlayerTurn());
