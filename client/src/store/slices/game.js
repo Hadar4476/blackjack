@@ -38,7 +38,8 @@ const drawCard = (state, action) => {
   const { newCard, participant } = action.payload;
 
   const aces = state[participant].cards.filter((c) => c.name.includes("ace"));
-  if (aces.length > 1) {
+  const isAce = newCard.name.includes("ace");
+  if (aces.length > 1 && isAce) {
     newCard.value = 1;
   }
 
