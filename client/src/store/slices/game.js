@@ -42,12 +42,25 @@ const drawCard = (state, action) => {
 const resetAces = (state, action) => {
   const participant = action.payload;
 
+  let resetCount = 0;
+  const aces = state[participant].cards.filter((c) => c.name.includes("ace"));
+
   state[participant].cards = state[participant].cards.map((c) => {
+    let value = c.value;
+
     const isAce = c.name.includes("ace");
+    if (isAce) {
+      if (aces.length === 1) {
+        value = 1;
+      } else if (aces.length > 1) {
+        value = !resetCount ? c.value : 1;
+        resetCount++;
+      }
+    }
 
     return {
       ...c,
-      value: isAce ? 1 : c.value,
+      value,
     };
   });
 };
