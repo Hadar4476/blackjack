@@ -37,18 +37,31 @@ const finishPlayerTurn = (state) => {
 const drawCard = (state, action) => {
   const { newCard, participant } = action.payload;
 
-  const aces = state[participant].cards.filter((c) => c.name.includes("ace"));
   const deckScore = state[participant].cards.reduce(
     (acc, i) => acc + i.value,
     0
   );
 
-  const isAce = newCard.name.includes("ace");
-  if (
-    (!aces.length && isAce && deckScore + newCard.value > 21) ||
-    (aces.length && isAce)
-  ) {
-    newCard.value = 1;
+  const aces = state[participant].cards.filter((c) => c.name.includes("ace"));
+  const shouldResetAces = deckScore + newCard.value > 21;
+
+  if (shouldResetAces) {
+    const isAce = newCard.name.includes("ace");
+
+    if (isAce) {
+      newCard.value = 1;
+    }
+
+    if (aces.length > 1) {
+      state[participant].cards = state[participant].cards.map((c) => {
+        const isAce = c.name.includes("ace");
+
+        return {
+          ...c,
+          value: isAce ? 1 : c.value,
+        };
+      });
+    }
   }
 
   state[participant].cards.push(newCard);

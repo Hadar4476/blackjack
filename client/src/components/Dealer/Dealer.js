@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { globalActions } from "../../store";
 import drawCard from "../../utils/draw-card";
@@ -14,16 +14,23 @@ const Dealer = (props) => {
 
   const dispatch = useDispatch();
 
+  const cardsContainerRef = useRef();
+
   const dealerScore = cards.reduce((acc, i) => acc + i.value, 0);
 
   // check if player decided to stay, dealer starts playing if so
   useEffect(() => {
     if (shouldPlayerStay) {
       // dealer should draw until the deck's value count hits 17
-      if (dealerScore <= 16) {
+      if (deck.length && dealerScore <= 16) {
         const newCard = drawCard(cards, deck, true);
 
         emitAddNewCard(newCard, "dealer");
+
+        setTimeout(() => {
+          cardsContainerRef.current.scrollLeft =
+            cardsContainerRef.current.scrollWidth;
+        }, 500);
       } else {
         // if dealer finished, should announce the winner
         dispatch(globalActions.game.announceWinner());
@@ -40,6 +47,7 @@ const Dealer = (props) => {
     <div className="container">
       <span className="title">Dealer</span>
       <div
+        ref={cardsContainerRef}
         className={`cards-container ${cards.length === 2 && "starting-deck"}`}
       >
         {cardElements}

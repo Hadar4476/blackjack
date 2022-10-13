@@ -6,3 +6,8 @@
   font-weight: bold;
   border: none;
 }
+
+.button:disabled {
+  background-color: gray !important;
+  cursor: not-allowed !important;
+}

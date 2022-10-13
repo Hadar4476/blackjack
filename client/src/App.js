@@ -61,6 +61,10 @@ const App = () => {
 
   const onAddNewCard = useCallback(
     (newCard, participant) => {
+      if (!deck.length) {
+        return;
+      }
+
       dispatch(globalActions.deck.drawCard(newCard.id));
       dispatch(
         globalActions.game.drawCard({
@@ -69,7 +73,7 @@ const App = () => {
         })
       );
     },
-    [dispatch]
+    [dispatch, deck]
   );
 
   // initializing the cards for each participant
