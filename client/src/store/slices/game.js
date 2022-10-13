@@ -38,8 +38,16 @@ const drawCard = (state, action) => {
   const { newCard, participant } = action.payload;
 
   const aces = state[participant].cards.filter((c) => c.name.includes("ace"));
+  const deckScore = state[participant].cards.reduce(
+    (acc, i) => acc + i.value,
+    0
+  );
+
   const isAce = newCard.name.includes("ace");
-  if (aces.length > 1 && isAce) {
+  if (
+    (!aces.length && isAce && deckScore + newCard.value > 21) ||
+    (aces.length && isAce)
+  ) {
     newCard.value = 1;
   }
 
