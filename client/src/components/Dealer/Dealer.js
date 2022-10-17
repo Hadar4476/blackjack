@@ -18,6 +18,12 @@ const Dealer = (props) => {
 
   const dealerScore = cards.reduce((acc, i) => acc + i.value, 0);
 
+  useEffect(() => {
+    if (dealerScore > 21) {
+      dispatch(globalActions.game.resetAces("dealer"));
+    }
+  }, [cards, dealerScore, dispatch]);
+
   // check if player decided to stay, dealer starts playing if so
   useEffect(() => {
     if (shouldPlayerStay) {

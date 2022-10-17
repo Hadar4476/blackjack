@@ -37,34 +37,35 @@ const finishPlayerTurn = (state) => {
 const drawCard = (state, action) => {
   const { newCard, participant } = action.payload;
 
-  const deckScore = state[participant].cards.reduce(
-    (acc, i) => acc + i.value,
-    0
-  );
+  state[participant].cards.push(newCard);
+};
 
-  const aces = state[participant].cards.filter((c) => c.name.includes("ace"));
-  const shouldResetAces = deckScore + newCard.value > 21;
+const resetAces = (state, action) => {
+  const participant = action.payload;
 
-  if (shouldResetAces) {
-    const isAce = newCard.name.includes("ace");
+  const cards = [...state[participant].cards];
+  const aces = cards.filter((c) => c.name.includes("ace"));
+  const nonAces = cards.filter((c) => !c.name.includes("ace"));
 
-    if (isAce) {
-      newCard.value = 1;
-    }
+  const nonAceScore = nonAces.reduce((acc, i) => acc + i.value, 0);
 
-    if (aces.length > 1) {
-      state[participant].cards = state[participant].cards.map((c) => {
-        const isAce = c.name.includes("ace");
+  if (aces.length) {
+    for (let i = 0; i < aces.length; i++) {
+      const ace = { ...aces[i] };
+      const aceInCards = cards.findIndex((c) => c.id === ace.id);
 
-        return {
-          ...c,
-          value: isAce ? 1 : c.value,
-        };
-      });
+      const allResetedScore = aces.reduce((acc) => acc++, 0);
+      const partlyResetedScore = aces.slice(1).reduce((acc) => acc++, 0);
+
+      if (11 + partlyResetedScore + nonAceScore < 21) {
+        state[participant].cards[aceInCards].value = !i ? 11 : 1;
+      } else if (allResetedScore + nonAceScore < 21) {
+        state[participant].cards[aceInCards].value = 1;
+      } else {
+        state[participant].cards[aceInCards].value = 1;
+      }
     }
   }
-
-  state[participant].cards.push(newCard);
 };
 
 // create a slice to be exported for the deck
@@ -76,6 +77,7 @@ const gameSlice = createSlice({
     finishGame,
     finishPlayerTurn,
     drawCard,
+    resetAces,
     restartGame: () => initialState,
   },
 });

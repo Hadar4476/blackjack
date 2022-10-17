@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { globalActions } from "../../store";
 import drawCard from "../../utils/draw-card";
@@ -16,6 +16,14 @@ const Player = (props) => {
   const dispatch = useDispatch();
 
   const cardsContainerRef = useRef();
+
+  useEffect(() => {
+    const playerScore = cards.reduce((acc, i) => acc + i.value, 0);
+
+    if (playerScore > 21) {
+      dispatch(globalActions.game.resetAces("player"));
+    }
+  }, [cards, dispatch]);
 
   // function for dispatching an action to indicate if the player decided to stay
   const onFinishPlayerTurn = () => {
