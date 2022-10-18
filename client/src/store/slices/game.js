@@ -57,7 +57,7 @@ const resetAces = (state, action) => {
       const allResetedScore = aces.reduce((acc) => acc++, 0);
       const partlyResetedScore = aces.slice(1).reduce((acc) => acc++, 0);
 
-      if (11 + partlyResetedScore + nonAceScore < 21) {
+      if (aces.length > 1 && 11 + partlyResetedScore + nonAceScore < 21) {
         state[participant].cards[aceInCards].value = !i ? 11 : 1;
       } else if (allResetedScore + nonAceScore < 21) {
         state[participant].cards[aceInCards].value = 1;
